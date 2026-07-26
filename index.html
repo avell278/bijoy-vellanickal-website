@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bijoy Vellanickal | Realtor — London &amp; Southwestern Ontario</title>
+<meta name="description" content="Bijoy Vellanickal, Sales Representative with RE/MAX Centre City Realty Inc. Helping families buy and sell homes across London, St. Thomas, Kitchener-Waterloo, and southwestern Ontario.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky-50:#EFF6FC; --sky-100:#DCEBF8; --sky-200:#B9D7F0; --sky-300:#8FBDE6;
+  --blue-500:#2E86D6; --blue-600:#1D6AB4; --navy-800:#0C3D6E; --navy-900:#062A4F;
+  --gold:#C9962E; --ink:#1B2733; --muted:#5A6B7B; --white:#FFFFFF;
+  --radius:14px; --maxw:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.65;font-size:16px}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.2;color:var(--navy-900)}
+img{max-width:100%;display:block}
+a{color:var(--blue-600)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-600);font-weight:600;margin-bottom:10px}
+.btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease;cursor:pointer;border:none}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--blue-500);color:var(--white)}
+.btn-primary:hover{background:var(--blue-600)}
+.btn-outline{background:transparent;color:var(--navy-800);border:1.5px solid var(--sky-300)}
+.btn-outline:hover{background:var(--sky-50)}
+section{padding:76px 0}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--sky-100)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:'Fraunces',serif;font-size:19px;font-weight:600;color:var(--navy-900);text-decoration:none}
+.brand span{color:var(--blue-500)}
+.nav-links{display:flex;gap:26px;align-items:center;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:14.5px;font-weight:500}
+.nav-links a:hover{color:var(--navy-800)}
+.nav-links .btn{padding:9px 18px;font-size:14px}
+
+.hero{background:linear-gradient(180deg,var(--sky-100) 0%,var(--sky-50) 100%);padding:84px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(34px,4.6vw,52px);margin:14px 0 18px}
+.hero h1 em{font-style:italic;color:var(--blue-600)}
+.hero p.lede{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:30px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.badge{background:var(--white);border:1px solid var(--sky-200);color:var(--navy-800);font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px}
+.portrait-card{background:var(--white);border-radius:20px;padding:14px;box-shadow:0 24px 60px -24px rgba(12,61,110,.35);transform:rotate(1.2deg)}
+.portrait-card img{border-radius:12px;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top}
+.portrait-fallback{border-radius:12px;width:100%;aspect-ratio:4/5;background:var(--sky-200);display:none;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:72px;color:var(--navy-800)}
+.portrait-caption{text-align:center;padding:12px 6px 4px;font-size:14px;color:var(--muted)}
+.portrait-caption strong{color:var(--navy-900);display:block;font-size:15px}
+
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.about h2{font-size:32px;margin-bottom:18px}
+.about p{color:var(--muted);margin-bottom:16px}
+.pillars{display:grid;gap:14px}
+.pillar{background:var(--sky-50);border:1px solid var(--sky-100);border-radius:var(--radius);padding:20px 22px}
+.pillar h3{font-size:17px;margin-bottom:5px;font-family:'Inter',sans-serif;font-weight:600;color:var(--navy-800)}
+.pillar p{font-size:14.5px;color:var(--muted);margin:0}
+
+.areas{background:var(--navy-900);color:var(--white)}
+.areas .eyebrow{color:var(--sky-300)}
+.areas h2{color:var(--white);font-size:30px;margin-bottom:12px}
+.areas p{color:var(--sky-200);max-width:560px;margin-bottom:28px}
+.area-chips{display:flex;flex-wrap:wrap;gap:11px}
+.area-chips span{background:rgba(255,255,255,.08);border:1px solid rgba(185,215,240,.3);color:var(--sky-100);padding:9px 20px;border-radius:999px;font-size:14.5px;font-weight:500}
+
+.listings-band{background:var(--sky-50);border-top:1px solid var(--sky-100);border-bottom:1px solid var(--sky-100)}
+.listings-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.listings-band h2{font-size:26px}
+.listings-band p{color:var(--muted);max-width:480px}
+
+.gallery h2{font-size:32px;margin-bottom:10px}
+.gallery>.wrap>p{color:var(--muted);max-width:600px;margin-bottom:34px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gcard{background:var(--white);border:1px solid var(--sky-100);border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 30px -18px rgba(12,61,110,.25)}
+.gcard .gimg{aspect-ratio:4/3;background:var(--sky-100);display:flex;align-items:center;justify-content:center;color:var(--blue-600);font-size:14px;font-weight:500;text-align:center;padding:12px}
+.gcard img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.gcard .gcap{padding:13px 16px;font-size:14px;color:var(--muted)}
+.gcard .gcap b{color:var(--navy-900);font-weight:600}
+
+.awards{background:var(--sky-50);border-top:1px solid var(--sky-100)}
+.awards h2{font-size:32px;margin-bottom:10px}
+.awards>.wrap>p{color:var(--muted);max-width:620px;margin-bottom:34px}
+.awards-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:20px;align-items:start}
+.acard{background:var(--white);border:1px solid var(--sky-100);border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 30px -18px rgba(12,61,110,.25)}
+.acard img{width:100%;aspect-ratio:4/5;object-fit:contain;background:var(--white)}
+.acard .acap{padding:13px 16px;font-size:13.5px;color:var(--muted)}
+.acard .acap b{color:var(--navy-900);font-weight:600;display:block}
+
+.reviews{background:var(--sky-50)}
+.reviews h2{font-size:32px;margin-bottom:10px}
+.reviews>.wrap>p{color:var(--muted);max-width:620px;margin-bottom:34px}
+.review-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:48px}
+.rcard{background:var(--white);border-radius:var(--radius);padding:26px 28px;border:1px solid var(--sky-100)}
+.stars{color:var(--gold);letter-spacing:2px;font-size:15px;margin-bottom:12px}
+.rcard blockquote{font-family:'Fraunces',serif;font-size:17px;color:var(--ink);margin-bottom:16px}
+.rcard .who{font-size:13.5px;color:var(--muted);font-weight:500}
+.review-form{background:var(--white);border:1px solid var(--sky-200);border-radius:var(--radius);padding:32px;max-width:640px}
+.review-form h3{font-size:21px;margin-bottom:6px}
+.review-form>p{font-size:14.5px;color:var(--muted);margin-bottom:22px}
+.review-form label{display:block;font-size:13.5px;font-weight:600;color:var(--navy-800);margin:14px 0 6px}
+.review-form input,.review-form textarea,.review-form select{width:100%;padding:11px 14px;border:1.5px solid var(--sky-200);border-radius:9px;font-family:inherit;font-size:15px;color:var(--ink);background:var(--white)}
+.review-form input:focus,.review-form textarea:focus,.review-form select:focus{outline:none;border-color:var(--blue-500)}
+.review-form textarea{min-height:110px;resize:vertical}
+.review-form .btn{margin-top:20px}
+.form-note{font-size:12.5px;color:var(--muted);margin-top:12px}
+
+.contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.contact h2{font-size:32px;margin-bottom:16px}
+.contact-list{list-style:none;display:grid;gap:16px;margin-top:24px}
+.contact-list li{display:flex;gap:14px;align-items:flex-start}
+.contact-list .ico{width:40px;height:40px;border-radius:10px;background:var(--sky-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.contact-list b{display:block;color:var(--navy-900);font-size:14.5px}
+.contact-list span{color:var(--muted);font-size:14.5px}
+.map-card{background:var(--sky-50);border:1px solid var(--sky-100);border-radius:var(--radius);padding:28px}
+.map-card h3{font-size:18px;margin-bottom:14px}
+.map-card p{font-size:14.5px;color:var(--muted);margin-bottom:18px}
+
+footer{background:var(--navy-900);color:var(--sky-200);padding:44px 0;font-size:13px}
+footer .wrap{display:grid;gap:14px}
+footer a{color:var(--sky-300)}
+.disclaimer{opacity:.75;line-height:1.7}
+
+@media(max-width:840px){
+  .hero .wrap,.about .wrap,.contact .wrap{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .awards-grid{grid-template-columns:1fr 1fr}
+  .review-grid{grid-template-columns:1fr}
+  .nav-links li:not(:last-child){display:none}
+  .portrait-card{max-width:340px;margin:0 auto}
+}
+@media(max-width:560px){.gallery-grid,.awards-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Bijoy <span>Vellanickal</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#gallery">Happy clients</a></li>
+      <li><a href="#awards">Recognition</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a class="btn btn-primary" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">RE/MAX Centre City Realty Inc. · London, Ontario</p>
+      <h1>Helping families find <em>home</em> across southwestern Ontario</h1>
+      <p class="lede">Professional but friendly, Bijoy treats every client like family — guiding you patiently from first showing to key handover, and staying available long after the sale.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://bijoyvellanickal.remaxcentrecity.ca/agents/1957019/Bijoy+Vellanickal" target="_blank" rel="noopener">View my listings</a>
+        <a class="btn btn-outline" href="tel:+12268804663">Call 226-880-HOME</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">Sales Representative</span>
+        <span class="badge">First-time buyer specialist</span>
+        <span class="badge">Malayalam · English</span>
+      </div>
+    </div>
+    <div>
+      <div class="portrait-card">
+        <!-- HEADSHOT: replace src with a local file, e.g. src="images/bijoy.jpg" -->
+        <img src="https://rankmyagent.com/upload/user/81883/zlXozP.JPEG" alt="Bijoy Vellanickal, Realtor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="portrait-fallback">BV</div>
+        <p class="portrait-caption"><strong>Bijoy Vellanickal</strong>Your realtor in London &amp; beyond</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">About Bijoy</p>
+      <h2>Real estate that feels like family</h2>
+      <p>Bijoy Vellanickal is a Sales Representative with RE/MAX Centre City Realty Inc., serving London and communities across southwestern Ontario. His deep understanding of these vibrant neighbourhoods, combined with genuine passion for real estate, makes him the ideal partner in your home-buying or selling journey.</p>
+      <p>What sets Bijoy apart is how he communicates — like a family member, not a salesperson. His calm demeanor and deep market knowledge turn what could be a stressful process into something simple and smooth. He answers questions at every step, gives sound advice, and stays there to guide you long after the deal closes.</p>
+      <p>Many first-time homebuyers and sellers share the same story: dedication, patience, and a process that felt easy from start to finish.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><h3>Patient guidance</h3><p>Especially for first-time buyers — no rushing, no pressure, every question answered.</p></div>
+      <div class="pillar"><h3>Deep local knowledge</h3><p>From London to the GTA, Bijoy knows the neighbourhoods, the markets, and the values.</p></div>
+      <div class="pillar"><h3>There after the sale</h3><p>The relationship doesn't end at closing. Bijoy stays available for advice long after you get the keys.</p></div>
+      <div class="pillar"><h3>Community roots</h3><p>A trusted realtor in the Malayali community, serving clients in Malayalam and English.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="wrap">
+    <p class="eyebrow">Where I work</p>
+    <h2>Serving southwestern Ontario and the GTA</h2>
+    <p>Whether you're buying your first home, upsizing for a growing family, or investing, Bijoy covers these communities:</p>
+    <div class="area-chips">
+      <span>London</span><span>St. Thomas</span><span>Sarnia</span><span>Kitchener</span>
+      <span>Waterloo</span><span>Cambridge</span><span>Brantford</span><span>Niagara</span><span>GTA</span>
+    </div>
+  </div>
+</section>
+
+<section class="listings-band">
+  <div class="wrap">
+    <div>
+      <h2>Looking for your next home?</h2>
+      <p>Browse Bijoy's active listings and search every MLS property on his official RE/MAX page.</p>
+    </div>
+    <a class="btn btn-primary" href="https://bijoyvellanickal.remaxcentrecity.ca/agents/1957019/Bijoy+Vellanickal" target="_blank" rel="noopener">Search listings on RE/MAX ↗</a>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <p class="eyebrow">Closing day</p>
+    <h2>Happy families, new keys</h2>
+    <p>Nothing beats the moment a family gets the keys to their new home. Here are a few of those days.</p>
+    <div class="gallery-grid">
+      <!-- TO ADD PHOTOS: replace each .gimg div with:  <img src="images/photo1.jpg" alt="describe the moment">  -->
+      <div class="gcard"><div class="gimg">Photo slot 1 — key handover<br>(replace with images/photo1.jpg)</div><div class="gcap"><b>Key handover</b> — a family's first home</div></div>
+      <div class="gcard"><div class="gimg">Photo slot 2 — sold sign<br>(replace with images/photo2.jpg)</div><div class="gcap"><b>Sold</b> — another happy seller</div></div>
+      <div class="gcard"><div class="gimg">Photo slot 3 — closing day<br>(replace with images/photo3.jpg)</div><div class="gcap"><b>Closing day</b> — welcome home</div></div>
+      <div class="gcard"><div class="gimg">Photo slot 4<br>(replace with images/photo4.jpg)</div><div class="gcap"><b>New beginnings</b></div></div>
+      <div class="gcard"><div class="gimg">Photo slot 5<br>(replace with images/photo5.jpg)</div><div class="gcap"><b>Keys in hand</b></div></div>
+      <div class="gcard"><div class="gimg">Photo slot 6<br>(replace with images/photo6.jpg)</div><div class="gcap"><b>Home at last</b></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="awards" id="awards">
+  <div class="wrap">
+    <p class="eyebrow">Recognition</p>
+    <h2>Award-winning service</h2>
+    <p>Consistently recognized among the top-performing realtors — a reflection of the families who trusted Bijoy with their move.</p>
+    <div class="awards-grid">
+      <div class="acard">
+        <img src="images/award-8-realtor-june-2025.jpg" alt="Bijoy Vellanickal named #8 Realtor for June 2025, RE/MAX Centre City Realty Inc.">
+        <div class="acap"><b>#8 Realtor — June 2025</b>RE/MAX Centre City Realty Inc.</div>
+      </div>
+      <div class="acard">
+        <img src="images/award-top-performers-feb-2025.jpg" alt="Top Sales Performers February 2025 — Bijoy Vellanickal ranked 4th">
+        <div class="acap"><b>Top Sales Performer</b>February 2025</div>
+      </div>
+      <div class="acard">
+        <img src="images/award-top-performers-oct-2023.jpg" alt="Top Sales Performers October 2023 — Bijoy Vellanickal ranked 3rd">
+        <div class="acap"><b>Top Sales Performer</b>October 2023</div>
+      </div>
+      <div class="acard">
+        <img src="images/award-top-performers-sep-2023.jpg" alt="Top Sales Performers September 2023 — Bijoy Vellanickal ranked 5th">
+        <div class="acap"><b>Top Sales Performer</b>September 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <p class="eyebrow">Reviews</p>
+    <h2>What clients say</h2>
+    <p>Replace these sample reviews with real client words — and every new review submitted below lands in Bijoy's inbox, ready to be added here.</p>
+    <div class="review-grid">
+      <!-- SAMPLE REVIEWS: replace with real client reviews -->
+      <div class="rcard"><div class="stars">★★★★★</div><blockquote>"Sample review — replace with a real client's words about buying their first home with Bijoy."</blockquote><p class="who">— Client name, London ON</p></div>
+      <div class="rcard"><div class="stars">★★★★★</div><blockquote>"Sample review — replace with a real seller's experience working with Bijoy."</blockquote><p class="who">— Client name, St. Thomas ON</p></div>
+    </div>
+
+    <div class="review-form">
+      <h3>Worked with Bijoy? Share your experience</h3>
+      <p>Your review is sent directly to Bijoy and may be featured on this page.</p>
+      <form id="reviewForm">
+        <label for="rname">Your name</label>
+        <input id="rname" type="text" placeholder="Anna &amp; Jos, London" required>
+        <label for="rrating">Rating</label>
+        <select id="rrating">
+          <option>★★★★★ — Excellent</option>
+          <option>★★★★ — Great</option>
+          <option>★★★ — Good</option>
+        </select>
+        <label for="rtext">Your review</label>
+        <textarea id="rtext" placeholder="Tell others about your experience buying or selling with Bijoy…" required></textarea>
+        <button class="btn btn-primary" type="submit">Send review</button>
+        <p class="form-note">Sending opens your email app with the review pre-filled — just hit send.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2>Let's find your home</h2>
+      <p style="color:var(--muted)">Reach out any time — by phone, WhatsApp, or through the brokerage. Bijoy is always happy to answer questions, no obligation.</p>
+      <ul class="contact-list">
+        <li><div class="ico">📞</div><div><b>Direct</b><span><a href="tel:+12268804663">226-880-HOME (4663)</a></span></div></li>
+        <li><div class="ico">🏢</div><div><b>Office</b><span><a href="tel:+15196671800">519-667-1800</a> (RE/MAX Centre City)</span></div></li>
+        <li><div class="ico">📍</div><div><b>Address</b><span>685 Adelaide St. N, London, ON N5Y 2L4</span></div></li>
+        <li><div class="ico">💬</div><div><b>Facebook</b><span><a href="https://www.facebook.com/bijoyvellanickal" target="_blank" rel="noopener">facebook.com/bijoyvellanickal</a></span></div></li>
+        <li><div class="ico">🏠</div><div><b>Listings</b><span><a href="https://bijoyvellanickal.remaxcentrecity.ca/agents/1957019/Bijoy+Vellanickal" target="_blank" rel="noopener">My RE/MAX agent page</a></span></div></li>
+      </ul>
+    </div>
+    <div class="map-card">
+      <h3>Send a quick message</h3>
+      <p>This opens your email app addressed to Bijoy.</p>
+      <form id="contactForm">
+        <label for="cname" style="display:block;font-size:13.5px;font-weight:600;color:var(--navy-800);margin:10px 0 6px">Your name</label>
+        <input id="cname" type="text" style="width:100%;padding:11px 14px;border:1.5px solid var(--sky-200);border-radius:9px;font-family:inherit;font-size:15px" required>
+        <label for="cmsg" style="display:block;font-size:13.5px;font-weight:600;color:var(--navy-800);margin:14px 0 6px">Message</label>
+        <textarea id="cmsg" style="width:100%;min-height:100px;padding:11px 14px;border:1.5px solid var(--sky-200);border-radius:9px;font-family:inherit;font-size:15px;resize:vertical" placeholder="I'm looking to buy in London this fall…" required></textarea>
+        <button class="btn btn-primary" type="submit" style="margin-top:18px">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><strong style="color:var(--white)">Bijoy Vellanickal</strong> · Sales Representative · RE/MAX Centre City Realty Inc., Brokerage</div>
+    <div>685 Adelaide St. N, London, ON N5Y 2L4 · <a href="tel:+12268804663">226-880-HOME (4663)</a> · <a href="tel:+15196671800">519-667-1800</a></div>
+    <p class="disclaimer">Each RE/MAX office is independently owned and operated. The trademarks REALTOR®, REALTORS® and the REALTOR® logo are controlled by The Canadian Real Estate Association (CREA) and identify real estate professionals who are members of CREA. The trademarks MLS®, Multiple Listing Service® and the associated logos are owned by CREA and identify the quality of services provided by real estate professionals who are members of CREA. Not intended to solicit properties currently listed for sale or buyers under contract.</p>
+  </div>
+</footer>
+
+<script>
+var AGENT_EMAIL = "REPLACE_WITH_BIJOY_EMAIL@example.com";
+document.getElementById('reviewForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('rname').value;
+  var rating = document.getElementById('rrating').value;
+  var text = document.getElementById('rtext').value;
+  var body = "Review from: " + name + "%0D%0ARating: " + encodeURIComponent(rating) + "%0D%0A%0D%0A" + encodeURIComponent(text);
+  window.location.href = "mailto:" + AGENT_EMAIL + "?subject=" + encodeURIComponent("Website review from " + name) + "&body=" + body;
+});
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('cname').value;
+  var msg = document.getElementById('cmsg').value;
+  window.location.href = "mailto:" + AGENT_EMAIL + "?subject=" + encodeURIComponent("Website inquiry from " + name) + "&body=" + encodeURIComponent(msg);
+});
+</script>
+</body>
+</html>
