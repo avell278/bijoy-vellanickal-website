@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Locks resource loading to known origins. GitHub Pages can't set response
+     headers, so this meta CSP is the enforcement point. Update the allowlists
+     below if you ever add a new font/image/script host. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Bijoy Vellanickal | Realtor — London &amp; Southwestern Ontario</title>
 <meta name="description" content="Bijoy Vellanickal, Sales Representative with RE/MAX Centre City Realty Inc. Helping families buy and sell homes across London, St. Thomas, Kitchener-Waterloo, and southwestern Ontario.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -172,8 +177,10 @@ footer a{color:var(--sky-300)}
     </div>
     <div>
       <div class="portrait-card">
-        <!-- HEADSHOT: replace src with a local file, e.g. src="images/bijoy.jpg" -->
-        <img src="https://rankmyagent.com/upload/user/81883/zlXozP.JPEG" alt="Bijoy Vellanickal, Realtor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <!-- HEADSHOT: served locally (was hotlinked from rankmyagent.com).
+             Swap in a higher-res file here when Bijoy provides one — 330x330
+             is on the small side for the 4/5 portrait frame. -->
+        <img src="images/bijoy-headshot.jpg" alt="Bijoy Vellanickal, Realtor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="portrait-fallback">BV</div>
         <p class="portrait-caption"><strong>Bijoy Vellanickal</strong>Your realtor in London &amp; beyond</p>
       </div>
@@ -333,20 +340,25 @@ footer a{color:var(--sky-300)}
 </footer>
 
 <script>
+// Clickjacking guard. GitHub Pages can't send X-Frame-Options, and
+// frame-ancestors is header-only, so this is the available defence:
+// if the page is framed by another origin, break out of the frame.
+if (window.top !== window.self) { try { window.top.location = window.self.location; } catch (e) { document.documentElement.style.display = 'none'; } }
+
 var AGENT_EMAIL = "REPLACE_WITH_BIJOY_EMAIL@example.com";
 document.getElementById('reviewForm').addEventListener('submit', function(e){
   e.preventDefault();
   var name = document.getElementById('rname').value;
   var rating = document.getElementById('rrating').value;
   var text = document.getElementById('rtext').value;
-  var body = "Review from: " + name + "%0D%0ARating: " + encodeURIComponent(rating) + "%0D%0A%0D%0A" + encodeURIComponent(text);
-  window.location.href = "mailto:" + AGENT_EMAIL + "?subject=" + encodeURIComponent("Website review from " + name) + "&body=" + body;
+  var body = encodeURIComponent("Review from: " + name + "\r\nRating: " + rating + "\r\n\r\n" + text);
+  window.location.href = "mailto:" + encodeURIComponent(AGENT_EMAIL).replace(/%40/g,"@") + "?subject=" + encodeURIComponent("Website review from " + name) + "&body=" + body;
 });
 document.getElementById('contactForm').addEventListener('submit', function(e){
   e.preventDefault();
   var name = document.getElementById('cname').value;
   var msg = document.getElementById('cmsg').value;
-  window.location.href = "mailto:" + AGENT_EMAIL + "?subject=" + encodeURIComponent("Website inquiry from " + name) + "&body=" + encodeURIComponent(msg);
+  window.location.href = "mailto:" + encodeURIComponent(AGENT_EMAIL).replace(/%40/g,"@") + "?subject=" + encodeURIComponent("Website inquiry from " + name) + "&body=" + encodeURIComponent(msg);
 });
 </script>
 </body>
