@@ -354,5 +354,20 @@ footer a{color:var(--sky-300)}
   </div>
 </footer>
 
+<!-- Netlify Identity widget: catches the #invite_token / #recovery_token in
+     emailed links and redirects the user into /admin to set their password.
+     Without this, invite links land on the homepage and appear to do nothing. -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", function (user) {
+    if (!user) {
+      window.netlifyIdentity.on("login", function () {
+        document.location.href = "/admin/";
+      });
+    }
+  });
+}
+</script>
 </body>
 </html>

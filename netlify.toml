@@ -11,7 +11,9 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-    Content-Security-Policy = "default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; form-action 'self'; base-uri 'none'; frame-ancestors 'none'"
+    # identity.netlify.com is needed so emailed invite/recovery links work.
+    # Note: no 'unsafe-eval' here — that stays confined to /admin/*.
+    Content-Security-Policy = "default-src 'none'; script-src 'self' 'unsafe-inline' https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://identity.netlify.com; form-action 'self'; base-uri 'none'; frame-ancestors 'none'"
 
 # The admin panel needs a looser policy: Decap loads from unpkg and talks to
 # the Netlify Identity/Git Gateway APIs and GitHub.
@@ -20,7 +22,11 @@
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: blob: https://avatars.githubusercontent.com; font-src 'self' data: https://unpkg.com; connect-src 'self' https://api.netlify.com https://api.github.com https://unpkg.com; frame-ancestors 'none'"
+    # 'unsafe-eval' is required: Decap bundles Ajv, which compiles JSON-schema
+    # validators with new Function() at runtime. Without it the CMS refuses to
+    # start ("Error loading the CMS configuration"). Scoped to /admin/* only —
+    # the public site keeps the strict policy with no eval.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; img-src 'self' data: blob: https://avatars.githubusercontent.com https://www.gravatar.com; font-src 'self' data: https://unpkg.com https://fonts.gstatic.com; connect-src 'self' https://api.netlify.com https://api.github.com https://unpkg.com https://adorable-bonbon-b72979.netlify.app; frame-ancestors 'none'"
 
 # Long-cache fingerprinted-ish static assets; HTML stays fresh.
 [[headers]]
