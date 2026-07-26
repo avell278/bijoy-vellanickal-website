@@ -6,15 +6,12 @@ City Realty Inc., London, Ontario.
 **Stack:** one static `index.html` — no build step. Open the file in a browser
 to preview.
 
-## Quick start with Claude Code
+## Editing
 
-1. Install Claude Code (see https://claude.com/claude-code) and the GitHub CLI.
-2. Open a terminal in this folder and run `claude`.
-3. Paste the contents of `PROMPT.md` as your first message.
+Everything lives in `index.html` — HTML, CSS, and a small script at the bottom.
+Colors are CSS variables in `:root`. Images go in `images/`.
 
-Claude Code will handle git setup, GitHub repo creation, and deployment.
-
-## Manual deploy (no Claude Code)
+## Deploy
 
 1. Create a repo on github.com and push this folder.
 2. Repo Settings → Pages → Deploy from branch → main → root. Site goes live at
@@ -24,7 +21,9 @@ Claude Code will handle git setup, GitHub repo creation, and deployment.
 
 ## Before going live
 
-- [ ] Replace `AGENT_EMAIL` in index.html with Bijoy's email
+- [ ] Replace `AGENT_EMAIL` in index.html with Bijoy's email (both forms use it)
 - [ ] Add key-handover photos to `images/` and wire into the gallery
+      (six placeholder slots are waiting)
 - [ ] Replace sample reviews with real client quotes
 - [ ] Replace hotlinked headshot with a local image
+- [x] Recognition section with award graphics
