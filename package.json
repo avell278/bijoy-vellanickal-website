@@ -1,0 +1,14 @@
+{
+  "name": "bijoy-vellanickal-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal website for Bijoy Vellanickal, Sales Representative at RE/MAX Centre City Realty Inc.",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

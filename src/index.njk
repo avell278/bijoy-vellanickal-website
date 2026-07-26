@@ -1,15 +1,14 @@
+---
+permalink: /index.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Locks resource loading to known origins. GitHub Pages can't set response
-     headers, so this meta CSP is the enforcement point. Update the allowlists
-     below if you ever add a new font/image/script host. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Bijoy Vellanickal | Realtor — London &amp; Southwestern Ontario</title>
-<meta name="description" content="Bijoy Vellanickal, Sales Representative with RE/MAX Centre City Realty Inc. Helping families buy and sell homes across London, St. Thomas, Kitchener-Waterloo, and southwestern Ontario.">
+<title>{{ site.name }} | Realtor — London &amp; Southwestern Ontario</title>
+<meta name="description" content="{{ site.name }}, {{ site.role }} with {{ site.brokerage }}. Helping families buy and sell homes across London, St. Thomas, Kitchener-Waterloo, and southwestern Ontario.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -141,6 +140,11 @@ footer a{color:var(--sky-300)}
 }
 @media(max-width:560px){.gallery-grid,.awards-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+.cf-label{display:block;font-size:13.5px;font-weight:600;color:var(--navy-800);margin:14px 0 6px}
+.cf-input{width:100%;padding:11px 14px;border:1.5px solid var(--sky-200);border-radius:9px;font-family:inherit;font-size:15px;color:var(--ink);background:var(--white)}
+.cf-input:focus{outline:none;border-color:var(--blue-500)}
+.cf-textarea{min-height:100px;resize:vertical}
+.hidden-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 </style>
 </head>
 <body>
@@ -151,7 +155,7 @@ footer a{color:var(--sky-300)}
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#areas">Areas</a></li>
-      <li><a href="#gallery">Happy clients</a></li>
+      {% if collections.gallery.length %}<li><a href="#gallery">Happy clients</a></li>{% endif %}
       <li><a href="#awards">Recognition</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a class="btn btn-primary" href="#contact">Contact</a></li>
@@ -162,27 +166,24 @@ footer a{color:var(--sky-300)}
 <header class="hero" id="top">
   <div class="wrap">
     <div>
-      <p class="eyebrow">RE/MAX Centre City Realty Inc. · London, Ontario</p>
-      <h1>Helping families find <em>home</em> across southwestern Ontario</h1>
-      <p class="lede">Professional but friendly, Bijoy treats every client like family — guiding you patiently from first showing to key handover, and staying available long after the sale.</p>
+      <p class="eyebrow">{{ site.brokerage }} · London, Ontario</p>
+      <h1>{{ site.headline | safe }}</h1>
+      <p class="lede">{{ site.lede }}</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="https://bijoyvellanickal.remaxcentrecity.ca/agents/1957019/Bijoy+Vellanickal" target="_blank" rel="noopener">View my listings</a>
-        <a class="btn btn-outline" href="tel:+12268804663">Call 226-880-HOME</a>
+        <a class="btn btn-primary" href="{{ site.listingsUrl }}" target="_blank" rel="noopener">View my listings</a>
+        <a class="btn btn-outline" href="tel:{{ site.phoneDirectHref }}">Call {{ site.phoneDirect }}</a>
       </div>
       <div class="hero-badges">
-        <span class="badge">Sales Representative</span>
+        <span class="badge">{{ site.role }}</span>
         <span class="badge">First-time buyer specialist</span>
         <span class="badge">Malayalam · English</span>
       </div>
     </div>
     <div>
       <div class="portrait-card">
-        <!-- HEADSHOT: served locally (was hotlinked from rankmyagent.com).
-             Swap in a higher-res file here when Bijoy provides one — 330x330
-             is on the small side for the 4/5 portrait frame. -->
-        <img src="images/bijoy-headshot.jpg" alt="Bijoy Vellanickal, Realtor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="/images/bijoy-headshot.jpg" alt="{{ site.name }}, Realtor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="portrait-fallback">BV</div>
-        <p class="portrait-caption"><strong>Bijoy Vellanickal</strong>Your realtor in London &amp; beyond</p>
+        <p class="portrait-caption"><strong>{{ site.name }}</strong>Your realtor in London &amp; beyond</p>
       </div>
     </div>
   </div>
@@ -193,14 +194,14 @@ footer a{color:var(--sky-300)}
     <div>
       <p class="eyebrow">About Bijoy</p>
       <h2>Real estate that feels like family</h2>
-      <p>Bijoy Vellanickal is a Sales Representative with RE/MAX Centre City Realty Inc., serving London and communities across southwestern Ontario. His deep understanding of these vibrant neighbourhoods, combined with genuine passion for real estate, makes him the ideal partner in your home-buying or selling journey.</p>
+      <p>{{ site.name }} is a {{ site.role }} with {{ site.brokerage }}, serving London and communities across southwestern Ontario. His deep understanding of these vibrant neighbourhoods, combined with genuine passion for real estate, makes him the ideal partner in your home-buying or selling journey.</p>
       <p>What sets Bijoy apart is how he communicates — like a family member, not a salesperson. His calm demeanor and deep market knowledge turn what could be a stressful process into something simple and smooth. He answers questions at every step, gives sound advice, and stays there to guide you long after the deal closes.</p>
       <p>Many first-time homebuyers and sellers share the same story: dedication, patience, and a process that felt easy from start to finish.</p>
     </div>
     <div class="pillars">
       <div class="pillar"><h3>Patient guidance</h3><p>Especially for first-time buyers — no rushing, no pressure, every question answered.</p></div>
       <div class="pillar"><h3>Deep local knowledge</h3><p>From London to the GTA, Bijoy knows the neighbourhoods, the markets, and the values.</p></div>
-      <div class="pillar"><h3>There after the sale</h3><p>The relationship doesn't end at closing. Bijoy stays available for advice long after you get the keys.</p></div>
+      <div class="pillar"><h3>There after the sale</h3><p>The relationship doesn&rsquo;t end at closing. Bijoy stays available for advice long after you get the keys.</p></div>
       <div class="pillar"><h3>Community roots</h3><p>A trusted realtor in the Malayali community, serving clients in Malayalam and English.</p></div>
     </div>
   </div>
@@ -210,10 +211,9 @@ footer a{color:var(--sky-300)}
   <div class="wrap">
     <p class="eyebrow">Where I work</p>
     <h2>Serving southwestern Ontario and the GTA</h2>
-    <p>Whether you're buying your first home, upsizing for a growing family, or investing, Bijoy covers these communities:</p>
+    <p>Whether you&rsquo;re buying your first home, upsizing for a growing family, or investing, Bijoy covers these communities:</p>
     <div class="area-chips">
-      <span>London</span><span>St. Thomas</span><span>Sarnia</span><span>Kitchener</span>
-      <span>Waterloo</span><span>Cambridge</span><span>Brantford</span><span>Niagara</span><span>GTA</span>
+      {% for area in site.areas %}<span>{{ area }}</span>{% endfor %}
     </div>
   </div>
 </section>
@@ -222,28 +222,29 @@ footer a{color:var(--sky-300)}
   <div class="wrap">
     <div>
       <h2>Looking for your next home?</h2>
-      <p>Browse Bijoy's active listings and search every MLS property on his official RE/MAX page.</p>
+      <p>Browse Bijoy&rsquo;s active listings and search every MLS property on his official RE/MAX page.</p>
     </div>
-    <a class="btn btn-primary" href="https://bijoyvellanickal.remaxcentrecity.ca/agents/1957019/Bijoy+Vellanickal" target="_blank" rel="noopener">Search listings on RE/MAX ↗</a>
+    <a class="btn btn-primary" href="{{ site.listingsUrl }}" target="_blank" rel="noopener">Search listings on RE/MAX ↗</a>
   </div>
 </section>
 
+{% if collections.gallery.length %}
 <section class="gallery" id="gallery">
   <div class="wrap">
     <p class="eyebrow">Closing day</p>
     <h2>Happy families, new keys</h2>
     <p>Nothing beats the moment a family gets the keys to their new home. Here are a few of those days.</p>
     <div class="gallery-grid">
-      <!-- TO ADD PHOTOS: replace each .gimg div with:  <img src="images/photo1.jpg" alt="describe the moment">  -->
-      <div class="gcard"><div class="gimg">Photo slot 1 — key handover<br>(replace with images/photo1.jpg)</div><div class="gcap"><b>Key handover</b> — a family's first home</div></div>
-      <div class="gcard"><div class="gimg">Photo slot 2 — sold sign<br>(replace with images/photo2.jpg)</div><div class="gcap"><b>Sold</b> — another happy seller</div></div>
-      <div class="gcard"><div class="gimg">Photo slot 3 — closing day<br>(replace with images/photo3.jpg)</div><div class="gcap"><b>Closing day</b> — welcome home</div></div>
-      <div class="gcard"><div class="gimg">Photo slot 4<br>(replace with images/photo4.jpg)</div><div class="gcap"><b>New beginnings</b></div></div>
-      <div class="gcard"><div class="gimg">Photo slot 5<br>(replace with images/photo5.jpg)</div><div class="gcap"><b>Keys in hand</b></div></div>
-      <div class="gcard"><div class="gimg">Photo slot 6<br>(replace with images/photo6.jpg)</div><div class="gcap"><b>Home at last</b></div></div>
+      {% for item in collections.gallery %}
+      <div class="gcard">
+        <img src="{{ item.data.photo }}" alt="{{ item.data.alt }}" loading="lazy">
+        <div class="gcap"><b>{{ item.data.caption }}</b>{% if item.data.subcaption %} — {{ item.data.subcaption }}{% endif %}</div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
 
 <section class="awards" id="awards">
   <div class="wrap">
@@ -252,19 +253,19 @@ footer a{color:var(--sky-300)}
     <p>Consistently recognized among the top-performing realtors — a reflection of the families who trusted Bijoy with their move.</p>
     <div class="awards-grid">
       <div class="acard">
-        <img src="images/award-8-realtor-june-2025.jpg" alt="Bijoy Vellanickal named #8 Realtor for June 2025, RE/MAX Centre City Realty Inc.">
-        <div class="acap"><b>#8 Realtor — June 2025</b>RE/MAX Centre City Realty Inc.</div>
+        <img src="/images/award-8-realtor-june-2025.jpg" alt="{{ site.name }} named #8 Realtor for June 2025, {{ site.brokerage }}" loading="lazy">
+        <div class="acap"><b>#8 Realtor — June 2025</b>{{ site.brokerage }}</div>
       </div>
       <div class="acard">
-        <img src="images/award-top-performers-feb-2025.jpg" alt="Top Sales Performers February 2025 — Bijoy Vellanickal ranked 4th">
+        <img src="/images/award-top-performers-feb-2025.jpg" alt="Top Sales Performers February 2025 — {{ site.name }} ranked 4th" loading="lazy">
         <div class="acap"><b>Top Sales Performer</b>February 2025</div>
       </div>
       <div class="acard">
-        <img src="images/award-top-performers-oct-2023.jpg" alt="Top Sales Performers October 2023 — Bijoy Vellanickal ranked 3rd">
+        <img src="/images/award-top-performers-oct-2023.jpg" alt="Top Sales Performers October 2023 — {{ site.name }} ranked 3rd" loading="lazy">
         <div class="acap"><b>Top Sales Performer</b>October 2023</div>
       </div>
       <div class="acard">
-        <img src="images/award-top-performers-sep-2023.jpg" alt="Top Sales Performers September 2023 — Bijoy Vellanickal ranked 5th">
+        <img src="/images/award-top-performers-sep-2023.jpg" alt="Top Sales Performers September 2023 — {{ site.name }} ranked 5th" loading="lazy">
         <div class="acap"><b>Top Sales Performer</b>September 2023</div>
       </div>
     </div>
@@ -275,29 +276,39 @@ footer a{color:var(--sky-300)}
   <div class="wrap">
     <p class="eyebrow">Reviews</p>
     <h2>What clients say</h2>
-    <p>Replace these sample reviews with real client words — and every new review submitted below lands in Bijoy's inbox, ready to be added here.</p>
+    <p>Real words from families Bijoy has helped buy and sell across southwestern Ontario.</p>
+    {% if collections.reviews.length %}
     <div class="review-grid">
-      <!-- SAMPLE REVIEWS: replace with real client reviews -->
-      <div class="rcard"><div class="stars">★★★★★</div><blockquote>"Sample review — replace with a real client's words about buying their first home with Bijoy."</blockquote><p class="who">— Client name, London ON</p></div>
-      <div class="rcard"><div class="stars">★★★★★</div><blockquote>"Sample review — replace with a real seller's experience working with Bijoy."</blockquote><p class="who">— Client name, St. Thomas ON</p></div>
+      {% for r in collections.reviews %}
+      <div class="rcard">
+        <div class="stars">{{ r.data.rating | stars }}</div>
+        <blockquote>&ldquo;{{ r.data.quote }}&rdquo;</blockquote>
+        <p class="who">— {{ r.data.name }}{% if r.data.location %}, {{ r.data.location }}{% endif %}</p>
+      </div>
+      {% endfor %}
     </div>
+    {% endif %}
 
     <div class="review-form">
       <h3>Worked with Bijoy? Share your experience</h3>
-      <p>Your review is sent directly to Bijoy and may be featured on this page.</p>
-      <form id="reviewForm">
+      <p>Reviews are read by Bijoy before they appear on this page.</p>
+      <form name="review" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/">
+        <input type="hidden" name="form-name" value="review">
+        <p class="hidden-field"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <label for="rname">Your name</label>
-        <input id="rname" type="text" placeholder="Anna &amp; Jos, London" required>
+        <input id="rname" name="name" type="text" placeholder="Anna &amp; Jos, London" required>
+        <label for="remail">Your email</label>
+        <input id="remail" name="email" type="email" placeholder="you@example.com" required>
         <label for="rrating">Rating</label>
-        <select id="rrating">
-          <option>★★★★★ — Excellent</option>
-          <option>★★★★ — Great</option>
-          <option>★★★ — Good</option>
+        <select id="rrating" name="rating">
+          <option value="5">★★★★★ — Excellent</option>
+          <option value="4">★★★★ — Great</option>
+          <option value="3">★★★ — Good</option>
         </select>
         <label for="rtext">Your review</label>
-        <textarea id="rtext" placeholder="Tell others about your experience buying or selling with Bijoy…" required></textarea>
+        <textarea id="rtext" name="review" placeholder="Tell others about your experience buying or selling with Bijoy…" required></textarea>
         <button class="btn btn-primary" type="submit">Send review</button>
-        <p class="form-note">Sending opens your email app with the review pre-filled — just hit send.</p>
+        <p class="form-note">Your review goes to Bijoy first. With your permission it may appear on this page.</p>
       </form>
     </div>
   </div>
@@ -307,24 +318,28 @@ footer a{color:var(--sky-300)}
   <div class="wrap">
     <div>
       <p class="eyebrow">Contact</p>
-      <h2>Let's find your home</h2>
+      <h2>Let&rsquo;s find your home</h2>
       <p style="color:var(--muted)">Reach out any time — by phone, WhatsApp, or through the brokerage. Bijoy is always happy to answer questions, no obligation.</p>
       <ul class="contact-list">
-        <li><div class="ico">📞</div><div><b>Direct</b><span><a href="tel:+12268804663">226-880-HOME (4663)</a></span></div></li>
-        <li><div class="ico">🏢</div><div><b>Office</b><span><a href="tel:+15196671800">519-667-1800</a> (RE/MAX Centre City)</span></div></li>
-        <li><div class="ico">📍</div><div><b>Address</b><span>685 Adelaide St. N, London, ON N5Y 2L4</span></div></li>
-        <li><div class="ico">💬</div><div><b>Facebook</b><span><a href="https://www.facebook.com/bijoyvellanickal" target="_blank" rel="noopener">facebook.com/bijoyvellanickal</a></span></div></li>
-        <li><div class="ico">🏠</div><div><b>Listings</b><span><a href="https://bijoyvellanickal.remaxcentrecity.ca/agents/1957019/Bijoy+Vellanickal" target="_blank" rel="noopener">My RE/MAX agent page</a></span></div></li>
+        <li><div class="ico">📞</div><div><b>Direct</b><span><a href="tel:{{ site.phoneDirectHref }}">{{ site.phoneDirect }}</a></span></div></li>
+        <li><div class="ico">🏢</div><div><b>Office</b><span><a href="tel:{{ site.phoneOfficeHref }}">{{ site.phoneOffice }}</a> ({{ site.brokerage }})</span></div></li>
+        <li><div class="ico">📍</div><div><b>Address</b><span>{{ site.address }}</span></div></li>
+        <li><div class="ico">💬</div><div><b>Facebook</b><span><a href="{{ site.facebook }}" target="_blank" rel="noopener">facebook.com/bijoyvellanickal</a></span></div></li>
+        <li><div class="ico">🏠</div><div><b>Listings</b><span><a href="{{ site.listingsUrl }}" target="_blank" rel="noopener">My RE/MAX agent page</a></span></div></li>
       </ul>
     </div>
     <div class="map-card">
       <h3>Send a quick message</h3>
-      <p>This opens your email app addressed to Bijoy.</p>
-      <form id="contactForm">
-        <label for="cname" style="display:block;font-size:13.5px;font-weight:600;color:var(--navy-800);margin:10px 0 6px">Your name</label>
-        <input id="cname" type="text" style="width:100%;padding:11px 14px;border:1.5px solid var(--sky-200);border-radius:9px;font-family:inherit;font-size:15px" required>
-        <label for="cmsg" style="display:block;font-size:13.5px;font-weight:600;color:var(--navy-800);margin:14px 0 6px">Message</label>
-        <textarea id="cmsg" style="width:100%;min-height:100px;padding:11px 14px;border:1.5px solid var(--sky-200);border-radius:9px;font-family:inherit;font-size:15px;resize:vertical" placeholder="I'm looking to buy in London this fall…" required></textarea>
+      <p>Bijoy usually replies the same day.</p>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hidden-field"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <label for="cname" class="cf-label">Your name</label>
+        <input id="cname" name="name" type="text" class="cf-input" required>
+        <label for="cemail" class="cf-label">Your email</label>
+        <input id="cemail" name="email" type="email" class="cf-input" required>
+        <label for="cmsg" class="cf-label">Message</label>
+        <textarea id="cmsg" name="message" class="cf-input cf-textarea" placeholder="I&rsquo;m looking to buy in London this fall…" required></textarea>
         <button class="btn btn-primary" type="submit" style="margin-top:18px">Send message</button>
       </form>
     </div>
@@ -333,33 +348,11 @@ footer a{color:var(--sky-300)}
 
 <footer>
   <div class="wrap">
-    <div><strong style="color:var(--white)">Bijoy Vellanickal</strong> · Sales Representative · RE/MAX Centre City Realty Inc., Brokerage</div>
-    <div>685 Adelaide St. N, London, ON N5Y 2L4 · <a href="tel:+12268804663">226-880-HOME (4663)</a> · <a href="tel:+15196671800">519-667-1800</a></div>
+    <div><strong style="color:var(--white)">{{ site.name }}</strong> · {{ site.role }} · {{ site.brokerage }}, Brokerage</div>
+    <div>{{ site.address }} · <a href="tel:{{ site.phoneDirectHref }}">{{ site.phoneDirect }}</a> · <a href="tel:{{ site.phoneOfficeHref }}">{{ site.phoneOffice }}</a></div>
     <p class="disclaimer">Each RE/MAX office is independently owned and operated. The trademarks REALTOR®, REALTORS® and the REALTOR® logo are controlled by The Canadian Real Estate Association (CREA) and identify real estate professionals who are members of CREA. The trademarks MLS®, Multiple Listing Service® and the associated logos are owned by CREA and identify the quality of services provided by real estate professionals who are members of CREA. Not intended to solicit properties currently listed for sale or buyers under contract.</p>
   </div>
 </footer>
 
-<script>
-// Clickjacking guard. GitHub Pages can't send X-Frame-Options, and
-// frame-ancestors is header-only, so this is the available defence:
-// if the page is framed by another origin, break out of the frame.
-if (window.top !== window.self) { try { window.top.location = window.self.location; } catch (e) { document.documentElement.style.display = 'none'; } }
-
-var AGENT_EMAIL = "REPLACE_WITH_BIJOY_EMAIL@example.com";
-document.getElementById('reviewForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  var name = document.getElementById('rname').value;
-  var rating = document.getElementById('rrating').value;
-  var text = document.getElementById('rtext').value;
-  var body = encodeURIComponent("Review from: " + name + "\r\nRating: " + rating + "\r\n\r\n" + text);
-  window.location.href = "mailto:" + encodeURIComponent(AGENT_EMAIL).replace(/%40/g,"@") + "?subject=" + encodeURIComponent("Website review from " + name) + "&body=" + body;
-});
-document.getElementById('contactForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  var name = document.getElementById('cname').value;
-  var msg = document.getElementById('cmsg').value;
-  window.location.href = "mailto:" + encodeURIComponent(AGENT_EMAIL).replace(/%40/g,"@") + "?subject=" + encodeURIComponent("Website inquiry from " + name) + "&body=" + encodeURIComponent(msg);
-});
-</script>
 </body>
 </html>

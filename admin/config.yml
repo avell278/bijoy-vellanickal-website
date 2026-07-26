@@ -1,0 +1,90 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Uploaded photos land here and are committed to the repo automatically.
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Friendlier wording than Decap's defaults, since Bijoy is not technical.
+locale: "en"
+
+collections:
+  # ---------------------------------------------------------------- reviews
+  - name: "reviews"
+    label: "Client Reviews"
+    label_singular: "Review"
+    folder: "content/reviews"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{name}} — {{#if published}}✅ Published{{else}}⏳ Not published yet{{/if}}"
+    description: >
+      Reviews from clients. New reviews start unpublished — flip
+      "Show this review on my website" to Yes when you're happy with it.
+    sortable_fields: ["date", "name"]
+    fields:
+      - { name: "name", label: "Client name", widget: "string", hint: "How it appears on the site, e.g. 'Anna & Jos, London'" }
+      - { name: "rating", label: "Star rating", widget: "number", default: 5, min: 1, max: 5, value_type: "int" }
+      - { name: "quote", label: "What they said", widget: "text" }
+      - { name: "location", label: "City", widget: "string", required: false, hint: "e.g. London ON" }
+      - { name: "date", label: "Date received", widget: "datetime", default: "" }
+      - name: "published"
+        label: "Show this review on my website"
+        widget: "boolean"
+        default: false
+        hint: "Off = saved but hidden. On = visible to everyone."
+      - { name: "body", label: "Private notes (never shown on the site)", widget: "markdown", required: false }
+
+  # ---------------------------------------------------------------- gallery
+  - name: "gallery"
+    label: "Happy Client Photos"
+    label_singular: "Photo"
+    folder: "content/gallery"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{caption}} — {{#if published}}✅ Shown{{else}}⏳ Hidden{{/if}}"
+    description: >
+      Closing-day and key-handover photos. Please get the family's
+      permission before publishing a photo of them.
+    fields:
+      - { name: "photo", label: "Photo", widget: "image" }
+      - { name: "caption", label: "Short caption", widget: "string", hint: "e.g. 'Key handover'" }
+      - { name: "subcaption", label: "Extra detail", widget: "string", required: false, hint: "e.g. 'a family's first home'" }
+      - name: "alt"
+        label: "Photo description (for screen readers)"
+        widget: "string"
+        hint: "Describe the picture for visitors who can't see it."
+      - { name: "order", label: "Position", widget: "number", default: 1, value_type: "int", hint: "1 shows first." }
+      - name: "published"
+        label: "Show this photo on my website"
+        widget: "boolean"
+        default: true
+      - name: "consent"
+        label: "I have the family's permission to publish this photo"
+        widget: "boolean"
+        default: false
+        required: true
+
+  # ------------------------------------------------------------ page text
+  - name: "settings"
+    label: "Website Text & Contact Info"
+    files:
+      - name: "site"
+        label: "Contact details and headline"
+        file: "src/_data/site.json"
+        description: "Your phone numbers, address, and the big headline on the homepage."
+        fields:
+          - { name: "name", label: "Your name", widget: "string" }
+          - { name: "role", label: "Title", widget: "string" }
+          - { name: "brokerage", label: "Brokerage", widget: "string" }
+          - { name: "email", label: "Your email address", widget: "string", hint: "Where contact-form messages are sent." }
+          - { name: "phoneDirect", label: "Direct phone (as displayed)", widget: "string" }
+          - { name: "phoneDirectHref", label: "Direct phone (dial format)", widget: "string", hint: "Digits only with +1, e.g. +12268804663" }
+          - { name: "phoneOffice", label: "Office phone (as displayed)", widget: "string" }
+          - { name: "phoneOfficeHref", label: "Office phone (dial format)", widget: "string" }
+          - { name: "address", label: "Office address", widget: "string" }
+          - { name: "listingsUrl", label: "RE/MAX listings page", widget: "string" }
+          - { name: "facebook", label: "Facebook page", widget: "string" }
+          - { name: "headline", label: "Main headline", widget: "string", hint: "Wrap a word in <em>…</em> to highlight it in blue." }
+          - { name: "lede", label: "Intro paragraph", widget: "text" }
+          - { name: "areas", label: "Areas you serve", widget: "list" }

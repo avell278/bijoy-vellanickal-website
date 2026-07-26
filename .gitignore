@@ -5,3 +5,8 @@ Thumbs.db
 # Internal working notes — not for the public repo
 CLAUDE.md
 PROMPT.md
+
+# Build output and dependencies
+node_modules/
+_site/
+.netlify/
