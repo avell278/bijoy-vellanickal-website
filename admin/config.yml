@@ -77,7 +77,7 @@ collections:
           - { name: "name", label: "Your name", widget: "string" }
           - { name: "role", label: "Title", widget: "string" }
           - { name: "brokerage", label: "Brokerage", widget: "string" }
-          - { name: "email", label: "Your email address", widget: "string", hint: "Where contact-form messages are sent." }
+          - { name: "email", label: "Your email address", widget: "string", hint: "Shown publicly on the site so visitors can email you directly." }
           - { name: "phoneDirect", label: "Direct phone (as displayed)", widget: "string" }
           - { name: "phoneDirectHref", label: "Direct phone (dial format)", widget: "string", hint: "Digits only with +1, e.g. +12268804663" }
           - { name: "phoneOffice", label: "Office phone (as displayed)", widget: "string" }
