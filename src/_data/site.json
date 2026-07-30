@@ -2,6 +2,7 @@
   "name": "Bijoy Vellanickal",
   "role": "Sales Representative",
   "brokerage": "RE/MAX Centre City Realty Inc.",
+  "url": "https://bijoyvellanickal.netlify.app",
   "email": "vellanickalb@gmail.com",
   "phoneDirect": "226-880-HOME (4663)",
   "phoneDirectHref": "+12268804663",
@@ -12,5 +13,15 @@
   "facebook": "https://www.facebook.com/bijoyvellanickal",
   "headline": "Helping families find <em>home</em> across southwestern Ontario",
   "lede": "Professional but friendly, Bijoy treats every client like family, guiding you patiently from first showing to key handover, and staying available long after the sale.",
-  "areas": ["London", "St. Thomas", "Sarnia", "Kitchener", "Waterloo", "Cambridge", "Brantford", "Niagara", "GTA"]
+  "areas": [
+    "London",
+    "St. Thomas",
+    "Sarnia",
+    "Kitchener",
+    "Waterloo",
+    "Cambridge",
+    "Brantford",
+    "Niagara",
+    "GTA"
+  ]
 }
