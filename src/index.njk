@@ -50,23 +50,36 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .nav-links .btn-primary,.nav-links .btn-primary:hover{color:var(--white)}
 
 .hero{background:linear-gradient(180deg,var(--sky-100) 0%,var(--sky-50) 100%);padding:84px 0 90px;position:relative;overflow:hidden;isolation:isolate}
-/* 3D depth field: layered shapes on separate Z-planes drifting at different
-   speeds to create parallax. Pure CSS — no library, no external requests.
-   Fully disabled under prefers-reduced-motion (see the media query below). */
-.hero-3d{position:absolute;inset:0;z-index:-1;perspective:900px;perspective-origin:50% 40%;pointer-events:none}
-.hero-3d span{position:absolute;display:block;border-radius:18px;transform-style:preserve-3d;will-change:transform}
-.hero-3d .s1{width:180px;height:180px;left:6%;top:14%;background:linear-gradient(135deg,rgba(46,134,214,.20),rgba(46,134,214,.05));animation:float3d 19s ease-in-out infinite}
-.hero-3d .s2{width:120px;height:120px;left:78%;top:8%;border-radius:50%;background:linear-gradient(135deg,rgba(12,61,110,.16),rgba(143,189,230,.05));animation:float3d 24s ease-in-out infinite reverse;animation-delay:-4s}
-.hero-3d .s3{width:230px;height:230px;left:66%;top:52%;background:linear-gradient(135deg,rgba(143,189,230,.24),rgba(255,255,255,0));animation:float3d 28s ease-in-out infinite;animation-delay:-9s}
-.hero-3d .s4{width:90px;height:90px;left:22%;top:68%;border-radius:26px;background:linear-gradient(135deg,rgba(29,106,180,.18),rgba(46,134,214,.04));animation:float3d 21s ease-in-out infinite reverse;animation-delay:-13s}
-.hero-3d .s5{width:150px;height:150px;left:44%;top:4%;border-radius:50%;background:linear-gradient(135deg,rgba(185,215,240,.30),rgba(255,255,255,0));animation:float3d 32s ease-in-out infinite;animation-delay:-6s}
-.hero-3d .s6{width:70px;height:70px;left:88%;top:74%;background:linear-gradient(135deg,rgba(12,61,110,.14),rgba(46,134,214,.03));animation:float3d 17s ease-in-out infinite;animation-delay:-2s}
-@keyframes float3d{
-  0%,100%{transform:translate3d(0,0,0) rotateX(0deg) rotateY(0deg)}
-  25%{transform:translate3d(18px,-26px,60px) rotateX(16deg) rotateY(-14deg)}
-  50%{transform:translate3d(-14px,-42px,-40px) rotateX(-12deg) rotateY(18deg)}
-  75%{transform:translate3d(-24px,-18px,30px) rotateX(9deg) rotateY(-9deg)}
+/* Parallax city skyline. Three depth planes drift horizontally at different
+   speeds — far towers slowest, near buildings fastest — which reads as real
+   depth rather than flat sliding. Each layer is a repeating SVG of building
+   silhouettes, inlined as a data URI so there are no external requests.
+   Kept low-opacity so it stays behind the headline. Motion is fully
+   disabled under prefers-reduced-motion (see the media query below). */
+.hero-3d{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.hero-3d .sky-layer{position:absolute;left:0;bottom:0;height:100%;width:200%;background-repeat:repeat-x;background-position:left bottom;will-change:transform}
+/* far plane — tall slim towers, palest, slowest */
+.hero-3d .sky-far{
+  background-size:auto 46%;
+  opacity:.30;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='300' viewBox='0 0 600 300'%3E%3Cg fill='%238FBDE6'%3E%3Crect x='10' y='120' width='38' height='180'/%3E%3Crect x='58' y='80' width='30' height='220'/%3E%3Crect x='98' y='150' width='44' height='150'/%3E%3Crect x='152' y='60' width='34' height='240'/%3E%3Crect x='196' y='130' width='40' height='170'/%3E%3Crect x='246' y='100' width='28' height='200'/%3E%3Crect x='284' y='165' width='46' height='135'/%3E%3Crect x='340' y='90' width='32' height='210'/%3E%3Crect x='382' y='140' width='38' height='160'/%3E%3Crect x='430' y='70' width='30' height='230'/%3E%3Crect x='470' y='155' width='42' height='145'/%3E%3Crect x='522' y='110' width='36' height='190'/%3E%3C/g%3E%3C/svg%3E");
+  animation:drift 150s linear infinite;
 }
+/* mid plane — mixed heights, medium tone and speed */
+.hero-3d .sky-mid{
+  background-size:auto 34%;
+  opacity:.34;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='300' viewBox='0 0 560 300'%3E%3Cg fill='%232E86D6'%3E%3Crect x='0' y='170' width='54' height='130'/%3E%3Crect x='64' y='130' width='42' height='170'/%3E%3Crect x='116' y='195' width='58' height='105'/%3E%3Crect x='184' y='145' width='46' height='155'/%3E%3Crect x='240' y='205' width='50' height='95'/%3E%3Crect x='300' y='160' width='44' height='140'/%3E%3Crect x='354' y='120' width='38' height='180'/%3E%3Crect x='402' y='190' width='56' height='110'/%3E%3Crect x='468' y='150' width='46' height='150'/%3E%3Crect x='524' y='200' width='36' height='100'/%3E%3C/g%3E%3C/svg%3E");
+  animation:drift 95s linear infinite;
+}
+/* near plane — low rooftops with pitched houses, deepest tone, fastest */
+.hero-3d .sky-near{
+  background-size:auto 22%;
+  opacity:.22;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='300' viewBox='0 0 520 300'%3E%3Cg fill='%230C3D6E'%3E%3Crect x='0' y='230' width='70' height='70'/%3E%3Cpath d='M78 235 L108 205 L138 235 L138 300 L78 300 Z'/%3E%3Crect x='146' y='215' width='64' height='85'/%3E%3Cpath d='M218 240 L246 212 L274 240 L274 300 L218 300 Z'/%3E%3Crect x='282' y='225' width='58' height='75'/%3E%3Cpath d='M348 238 L378 208 L408 238 L408 300 L348 300 Z'/%3E%3Crect x='416' y='220' width='58' height='80'/%3E%3Crect x='482' y='240' width='38' height='60'/%3E%3C/g%3E%3C/svg%3E");
+  animation:drift 62s linear infinite;
+}
+@keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;position:relative}
 .hero h1{font-size:clamp(34px,4.6vw,52px);margin:14px 0 18px}
 .hero h1 em{font-style:italic;color:var(--blue-600)}
@@ -177,8 +190,8 @@ footer a{color:var(--sky-300)}
   html{scroll-behavior:auto}
   .btn{transition:none}
   /* Stop the parallax entirely — motion like this can trigger vestibular
-     symptoms. The shapes stay as a static gradient composition. */
-  .hero-3d span{animation:none!important}
+     symptoms. The skyline stays as a static silhouette. */
+  .hero-3d .sky-layer{animation:none!important}
   .contact-list .ico,.card-3d{transition:none!important}
 }
 .cf-label{display:block;font-size:13.5px;font-weight:600;color:var(--navy-800);margin:14px 0 6px}
@@ -213,8 +226,9 @@ footer a{color:var(--sky-300)}
 
 <header class="hero" id="top">
   <div class="hero-3d" aria-hidden="true">
-    <span class="s1"></span><span class="s2"></span><span class="s3"></span>
-    <span class="s4"></span><span class="s5"></span><span class="s6"></span>
+    <div class="sky-layer sky-far"></div>
+    <div class="sky-layer sky-mid"></div>
+    <div class="sky-layer sky-near"></div>
   </div>
   <div class="wrap">
     <div>
