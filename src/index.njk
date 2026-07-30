@@ -49,42 +49,45 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .nav-links .btn{padding:9px 18px;font-size:14px}
 .nav-links .btn-primary,.nav-links .btn-primary:hover{color:var(--white)}
 
-.hero{background:linear-gradient(180deg,var(--sky-100) 0%,var(--sky-50) 100%);padding:84px 0 90px;position:relative;overflow:hidden;isolation:isolate}
+/* No isolation:isolate here — it creates a stacking context that traps the
+   z-index:-1 skyline *behind* the hero's own gradient, making it invisible.
+   The layer sits at z-index:0 above the background and the content sits at
+   z-index:1 above the layer. */
+.hero{background:linear-gradient(180deg,var(--sky-100) 0%,var(--sky-50) 100%);padding:84px 0 90px;position:relative;overflow:hidden}
 /* Parallax city skyline. Three depth planes drift horizontally at different
    speeds — far towers slowest, near buildings fastest — which reads as real
    depth rather than flat sliding. Each layer is a repeating SVG of building
    silhouettes, inlined as a data URI so there are no external requests.
    Kept low-opacity so it stays behind the headline. Motion is fully
    disabled under prefers-reduced-motion (see the media query below). */
-.hero-3d{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
-/* Each layer is only as tall as its own silhouette and pinned to the hero's
-   base, so the skyline always sits along the bottom edge regardless of how
-   tall the hero grows. (A full-height layer pushes the bottom-aligned
-   artwork out of view on tall/mobile heroes.) */
-.hero-3d .sky-layer{position:absolute;left:0;bottom:0;width:200%;background-repeat:repeat-x;background-position:left bottom;background-size:auto 100%;will-change:transform}
+.hero-3d{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+/* Anchored to the TOP of the hero, not the bottom. The hero runs ~1085px
+   tall on desktop (portrait card included) while the fold is nearer 700px,
+   so a bottom-pinned skyline renders entirely below the visible area. */
+.hero-3d .sky-layer{position:absolute;left:0;top:0;width:200%;background-repeat:repeat-x;background-position:left bottom;background-size:auto 100%;will-change:transform}
 /* far plane — tall slim towers, palest, slowest */
 .hero-3d .sky-far{
-  height:210px;
-  opacity:.30;
+  height:430px;
+  opacity:.34;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='300' viewBox='0 0 600 300'%3E%3Cg fill='%238FBDE6'%3E%3Crect x='10' y='120' width='38' height='180'/%3E%3Crect x='58' y='80' width='30' height='220'/%3E%3Crect x='98' y='150' width='44' height='150'/%3E%3Crect x='152' y='60' width='34' height='240'/%3E%3Crect x='196' y='130' width='40' height='170'/%3E%3Crect x='246' y='100' width='28' height='200'/%3E%3Crect x='284' y='165' width='46' height='135'/%3E%3Crect x='340' y='90' width='32' height='210'/%3E%3Crect x='382' y='140' width='38' height='160'/%3E%3Crect x='430' y='70' width='30' height='230'/%3E%3Crect x='470' y='155' width='42' height='145'/%3E%3Crect x='522' y='110' width='36' height='190'/%3E%3C/g%3E%3C/svg%3E");
   animation:drift 150s linear infinite;
 }
 /* mid plane — mixed heights, medium tone and speed */
 .hero-3d .sky-mid{
-  height:150px;
-  opacity:.34;
+  height:500px;
+  opacity:.30;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='300' viewBox='0 0 560 300'%3E%3Cg fill='%232E86D6'%3E%3Crect x='0' y='170' width='54' height='130'/%3E%3Crect x='64' y='130' width='42' height='170'/%3E%3Crect x='116' y='195' width='58' height='105'/%3E%3Crect x='184' y='145' width='46' height='155'/%3E%3Crect x='240' y='205' width='50' height='95'/%3E%3Crect x='300' y='160' width='44' height='140'/%3E%3Crect x='354' y='120' width='38' height='180'/%3E%3Crect x='402' y='190' width='56' height='110'/%3E%3Crect x='468' y='150' width='46' height='150'/%3E%3Crect x='524' y='200' width='36' height='100'/%3E%3C/g%3E%3C/svg%3E");
   animation:drift 95s linear infinite;
 }
 /* near plane — low rooftops with pitched houses, deepest tone, fastest */
 .hero-3d .sky-near{
-  height:95px;
-  opacity:.22;
+  height:560px;
+  opacity:.20;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='300' viewBox='0 0 520 300'%3E%3Cg fill='%230C3D6E'%3E%3Crect x='0' y='230' width='70' height='70'/%3E%3Cpath d='M78 235 L108 205 L138 235 L138 300 L78 300 Z'/%3E%3Crect x='146' y='215' width='64' height='85'/%3E%3Cpath d='M218 240 L246 212 L274 240 L274 300 L218 300 Z'/%3E%3Crect x='282' y='225' width='58' height='75'/%3E%3Cpath d='M348 238 L378 208 L408 238 L408 300 L348 300 Z'/%3E%3Crect x='416' y='220' width='58' height='80'/%3E%3Crect x='482' y='240' width='38' height='60'/%3E%3C/g%3E%3C/svg%3E");
   animation:drift 62s linear infinite;
 }
 @keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;position:relative;z-index:1}
 .hero h1{font-size:clamp(34px,4.6vw,52px);margin:14px 0 18px}
 .hero h1 em{font-style:italic;color:var(--blue-600)}
 .hero p.lede{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:30px}
