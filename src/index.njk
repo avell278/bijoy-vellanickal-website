@@ -7,7 +7,7 @@ permalink: /index.html
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>{{ site.name }} | Realtor — London &amp; Southwestern Ontario</title>
+<title>{{ site.name }} | Realtor, London &amp; Southwestern Ontario</title>
 <meta name="description" content="{{ site.name }}, {{ site.role }} with {{ site.brokerage }}. Helping families buy and sell homes across London, St. Thomas, Kitchener-Waterloo, and southwestern Ontario.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,13 +49,13 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .nav-links .btn{padding:9px 18px;font-size:14px}
 .nav-links .btn-primary,.nav-links .btn-primary:hover{color:var(--white)}
 
-/* No isolation:isolate here — it creates a stacking context that traps the
+/* No isolation:isolate here: it creates a stacking context that traps the
    z-index:-1 skyline *behind* the hero's own gradient, making it invisible.
    The layer sits at z-index:0 above the background and the content sits at
    z-index:1 above the layer. */
 .hero{background:linear-gradient(180deg,var(--sky-100) 0%,var(--sky-50) 100%);padding:84px 0 90px;position:relative;overflow:hidden}
 /* Parallax city skyline. Three depth planes drift horizontally at different
-   speeds — far towers slowest, near buildings fastest — which reads as real
+   speeds (far towers slowest, near buildings fastest) which reads as real
    depth rather than flat sliding. Each layer is a repeating SVG of building
    silhouettes, inlined as a data URI so there are no external requests.
    Kept low-opacity so it stays behind the headline. Motion is fully
@@ -65,23 +65,23 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
    tall on desktop (portrait card included) while the fold is nearer 700px,
    so a bottom-pinned skyline renders entirely below the visible area. */
 .hero-3d .sky-layer{position:absolute;left:0;top:0;width:200%;background-repeat:repeat-x;background-position:left bottom;background-size:auto 100%;will-change:transform}
-/* far plane — tall slim towers, palest, slowest */
+/* far plane: tall slim towers, palest, slowest */
 .hero-3d .sky-far{
-  height:300px;
+  height:560px;
   opacity:.16;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='300' viewBox='0 0 600 300'%3E%3Cg fill='%238FBDE6'%3E%3Crect x='10' y='120' width='38' height='180'/%3E%3Crect x='58' y='80' width='30' height='220'/%3E%3Crect x='98' y='150' width='44' height='150'/%3E%3Crect x='152' y='60' width='34' height='240'/%3E%3Crect x='196' y='130' width='40' height='170'/%3E%3Crect x='246' y='100' width='28' height='200'/%3E%3Crect x='284' y='165' width='46' height='135'/%3E%3Crect x='340' y='90' width='32' height='210'/%3E%3Crect x='382' y='140' width='38' height='160'/%3E%3Crect x='430' y='70' width='30' height='230'/%3E%3Crect x='470' y='155' width='42' height='145'/%3E%3Crect x='522' y='110' width='36' height='190'/%3E%3C/g%3E%3C/svg%3E");
   animation:drift 150s linear infinite;
 }
-/* mid plane — mixed heights, medium tone and speed */
+/* mid plane: mixed heights, medium tone and speed */
 .hero-3d .sky-mid{
-  height:340px;
+  height:590px;
   opacity:.14;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='300' viewBox='0 0 560 300'%3E%3Cg fill='%232E86D6'%3E%3Crect x='0' y='170' width='54' height='130'/%3E%3Crect x='64' y='130' width='42' height='170'/%3E%3Crect x='116' y='195' width='58' height='105'/%3E%3Crect x='184' y='145' width='46' height='155'/%3E%3Crect x='240' y='205' width='50' height='95'/%3E%3Crect x='300' y='160' width='44' height='140'/%3E%3Crect x='354' y='120' width='38' height='180'/%3E%3Crect x='402' y='190' width='56' height='110'/%3E%3Crect x='468' y='150' width='46' height='150'/%3E%3Crect x='524' y='200' width='36' height='100'/%3E%3C/g%3E%3C/svg%3E");
   animation:drift 95s linear infinite;
 }
-/* near plane — low rooftops with pitched houses, deepest tone, fastest */
+/* near plane: low rooftops with pitched houses, deepest tone, fastest */
 .hero-3d .sky-near{
-  height:380px;
+  height:620px;
   opacity:.10;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='300' viewBox='0 0 520 300'%3E%3Cg fill='%230C3D6E'%3E%3Crect x='0' y='230' width='70' height='70'/%3E%3Cpath d='M78 235 L108 205 L138 235 L138 300 L78 300 Z'/%3E%3Crect x='146' y='215' width='64' height='85'/%3E%3Cpath d='M218 240 L246 212 L274 240 L274 300 L218 300 Z'/%3E%3Crect x='282' y='225' width='58' height='75'/%3E%3Cpath d='M348 238 L378 208 L408 238 L408 300 L348 300 Z'/%3E%3Crect x='416' y='220' width='58' height='80'/%3E%3Crect x='482' y='240' width='38' height='60'/%3E%3C/g%3E%3C/svg%3E");
   animation:drift 62s linear infinite;
@@ -90,7 +90,9 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;position:relative;z-index:1}
 .hero h1{font-size:clamp(34px,4.6vw,52px);margin:14px 0 18px}
 .hero h1 em{font-style:italic;color:var(--blue-600)}
-.hero p.lede{font-size:18px;color:var(--muted);max-width:520px;margin-bottom:30px}
+/* navy-800 rather than the muted grey: the grey sat too close in tone to
+   the skyline silhouettes behind it. */
+.hero p.lede{font-size:18px;color:var(--navy-800);max-width:520px;margin-bottom:30px}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
 .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
 .badge{background:var(--white);border:1px solid var(--sky-200);color:var(--navy-800);font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px}
@@ -170,9 +172,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,select:focus-visible,inp
 .contact-list .ico{width:40px;height:40px;border-radius:10px;background:var(--sky-100);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--blue-600);transition:transform .2s ease,background .2s ease}
 .contact-list .ico svg{width:20px;height:20px;display:block}
 .contact-list li:hover .ico{transform:translateY(-2px);background:var(--sky-200)}
-/* Facebook's official brand blue for its official mark. */
-.contact-list .ico-fb{background:#1877F2;color:var(--white)}
-.contact-list li:hover .ico-fb{background:#166FE5}
+/* Facebook keeps its official glyph but takes the site's icon colours so the
+   row reads as one consistent set. */
 .contact-list b{display:block;color:var(--navy-900);font-size:14.5px}
 .contact-list span{color:var(--muted);font-size:14.5px}
 .map-card{background:var(--sky-50);border:1px solid var(--sky-100);border-radius:var(--radius);padding:28px}
@@ -196,7 +197,7 @@ footer a{color:var(--sky-300)}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .btn{transition:none}
-  /* Stop the parallax entirely — motion like this can trigger vestibular
+  /* Stop the parallax entirely: motion like this can trigger vestibular
      symptoms. The skyline stays as a static silhouette. */
   .hero-3d .sky-layer{animation:none!important}
   .contact-list .ico,.card-3d{transition:none!important}
@@ -268,11 +269,11 @@ footer a{color:var(--sky-300)}
       <p class="eyebrow">About Bijoy</p>
       <h2>Real estate that feels like family</h2>
       <p>{{ site.name }} is a {{ site.role }} with {{ site.brokerage }}, serving London and communities across southwestern Ontario. His deep understanding of these vibrant neighbourhoods, combined with genuine passion for real estate, makes him the ideal partner in your home-buying or selling journey.</p>
-      <p>What sets Bijoy apart is how he communicates — like a family member, not a salesperson. His calm demeanor and deep market knowledge turn what could be a stressful process into something simple and smooth. He answers questions at every step, gives sound advice, and stays there to guide you long after the deal closes.</p>
+      <p>What sets Bijoy apart is how he communicates like a family member, not a salesperson. His calm demeanor and deep market knowledge turn what could be a stressful process into something simple and smooth. He answers questions at every step, gives sound advice, and stays there to guide you long after the deal closes.</p>
       <p>Many first-time homebuyers and sellers share the same story: dedication, patience, and a process that felt easy from start to finish.</p>
     </div>
     <div class="pillars">
-      <div class="pillar"><h3>Patient guidance</h3><p>Especially for first-time buyers — no rushing, no pressure, every question answered.</p></div>
+      <div class="pillar"><h3>Patient guidance</h3><p>Especially for first-time buyers: no rushing, no pressure, every question answered.</p></div>
       <div class="pillar"><h3>Deep local knowledge</h3><p>From London to the GTA, Bijoy knows the neighbourhoods, the markets, and the values.</p></div>
       <div class="pillar"><h3>There after the sale</h3><p>The relationship doesn&rsquo;t end at closing. Bijoy stays available for advice long after you get the keys.</p></div>
       <div class="pillar"><h3>Community roots</h3><p>A trusted realtor in the Malayali community, serving clients in Malayalam and English.</p></div>
@@ -311,7 +312,7 @@ footer a{color:var(--sky-300)}
       {% for item in collections.gallery %}
       <div class="gcard">
         <img src="{{ item.data.photo }}" alt="{{ item.data.alt }}" loading="lazy">
-        <div class="gcap"><b>{{ item.data.caption }}</b>{% if item.data.subcaption %} — {{ item.data.subcaption }}{% endif %}</div>
+        <div class="gcap"><b>{{ item.data.caption }}</b>{% if item.data.subcaption %}, {{ item.data.subcaption }}{% endif %}</div>
       </div>
       {% endfor %}
     </div>
@@ -323,22 +324,22 @@ footer a{color:var(--sky-300)}
   <div class="wrap">
     <p class="eyebrow">Recognition</p>
     <h2>Award-winning service</h2>
-    <p>Consistently recognized among the top-performing realtors — a reflection of the families who trusted Bijoy with their move.</p>
+    <p>Consistently recognized among the top-performing realtors, a reflection of the families who trusted Bijoy with their move.</p>
     <div class="awards-grid">
       <div class="acard">
         <img src="/images/award-8-realtor-june-2025.jpg" alt="{{ site.name }} named #8 Realtor for June 2025, {{ site.brokerage }}" loading="lazy">
-        <div class="acap"><b>#8 Realtor — June 2025</b>{{ site.brokerage }}</div>
+        <div class="acap"><b>#8 Realtor, June 2025</b>{{ site.brokerage }}</div>
       </div>
       <div class="acard">
-        <img src="/images/award-top-performers-feb-2025.jpg" alt="Top Sales Performers February 2025 — {{ site.name }} ranked 4th" loading="lazy">
+        <img src="/images/award-top-performers-feb-2025.jpg" alt="Top Sales Performers February 2025, {{ site.name }} ranked 4th" loading="lazy">
         <div class="acap"><b>Top Sales Performer</b>February 2025</div>
       </div>
       <div class="acard">
-        <img src="/images/award-top-performers-oct-2023.jpg" alt="Top Sales Performers October 2023 — {{ site.name }} ranked 3rd" loading="lazy">
+        <img src="/images/award-top-performers-oct-2023.jpg" alt="Top Sales Performers October 2023, {{ site.name }} ranked 3rd" loading="lazy">
         <div class="acap"><b>Top Sales Performer</b>October 2023</div>
       </div>
       <div class="acard">
-        <img src="/images/award-top-performers-sep-2023.jpg" alt="Top Sales Performers September 2023 — {{ site.name }} ranked 5th" loading="lazy">
+        <img src="/images/award-top-performers-sep-2023.jpg" alt="Top Sales Performers September 2023, {{ site.name }} ranked 5th" loading="lazy">
         <div class="acap"><b>Top Sales Performer</b>September 2023</div>
       </div>
     </div>
@@ -356,7 +357,7 @@ footer a{color:var(--sky-300)}
       <div class="rcard">
         <div class="stars" role="img" aria-label="{{ r.data.rating }} out of 5 stars"><span aria-hidden="true">{{ r.data.rating | stars }}</span></div>
         <blockquote>&ldquo;{{ r.data.quote }}&rdquo;</blockquote>
-        <p class="who">— {{ r.data.name }}{% if r.data.location %}, {{ r.data.location }}{% endif %}</p>
+        <p class="who">{{ r.data.name }}{% if r.data.location %}, {{ r.data.location }}{% endif %}</p>
       </div>
       {% endfor %}
     </div>
@@ -374,9 +375,9 @@ footer a{color:var(--sky-300)}
         <input id="remail" name="email" type="email" placeholder="you@example.com" required>
         <label for="rrating">Rating</label>
         <select id="rrating" name="rating">
-          <option value="5">★★★★★ — Excellent</option>
-          <option value="4">★★★★ — Great</option>
-          <option value="3">★★★ — Good</option>
+          <option value="5">★★★★★ Excellent</option>
+          <option value="4">★★★★ Great</option>
+          <option value="3">★★★ Good</option>
         </select>
         <label for="rtext">Your review</label>
         <textarea id="rtext" name="review" placeholder="Tell others about your experience buying or selling with Bijoy…" required></textarea>
@@ -392,13 +393,13 @@ footer a{color:var(--sky-300)}
     <div>
       <p class="eyebrow">Contact</p>
       <h2>Let&rsquo;s find your home</h2>
-      <p style="color:var(--muted)">Reach out any time — by phone, WhatsApp, or through the brokerage. Bijoy is always happy to answer questions, no obligation.</p>
+      <p style="color:var(--muted)">Reach out any time, by phone, WhatsApp, or through the brokerage. Bijoy is always happy to answer questions, no obligation.</p>
       <ul class="contact-list">
         <li><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><b>Direct</b><span><a href="tel:{{ site.phoneDirectHref }}">{{ site.phoneDirect }}</a></span></div></li>
         <li><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M15 21V9h4a2 2 0 0 1 2 2v10"/><path d="M9 7h2M9 11h2M9 15h2"/></svg></div><div><b>Office</b><span><a href="tel:{{ site.phoneOfficeHref }}">{{ site.phoneOffice }}</a> ({{ site.brokerage }})</span></div></li>
         <li><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></div><div><b>Email</b><span><a href="mailto:{{ site.email }}">{{ site.email }}</a></span></div></li>
         <li><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><b>Address</b><span>{{ site.address }}</span></div></li>
-        <li><div class="ico ico-fb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 3.925 23.094 9.101 24v-8.437H6.627v-3.49h2.474V9.9c0-2.475 1.468-3.843 3.71-3.843 1.075 0 2.2.193 2.2.193v2.42h-1.24c-1.222 0-1.603.762-1.603 1.543v1.86h2.728l-.436 3.49h-2.292V24C20.075 23.094 24 18.1 24 12.073z"/></svg></div><div><b>Facebook</b><span><a href="{{ site.facebook }}" target="_blank" rel="noopener">facebook.com/bijoyvellanickal</a></span></div></li>
+        <li><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 3.925 23.094 9.101 24v-8.437H6.627v-3.49h2.474V9.9c0-2.475 1.468-3.843 3.71-3.843 1.075 0 2.2.193 2.2.193v2.42h-1.24c-1.222 0-1.603.762-1.603 1.543v1.86h2.728l-.436 3.49h-2.292V24C20.075 23.094 24 18.1 24 12.073z"/></svg></div><div><b>Facebook</b><span><a href="{{ site.facebook }}" target="_blank" rel="noopener">facebook.com/bijoyvellanickal</a></span></div></li>
         <li><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10.5 9-7 9 7"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></div><div><b>Listings</b><span><a href="{{ site.listingsUrl }}" target="_blank" rel="noopener">My RE/MAX agent page</a></span></div></li>
       </ul>
     </div>

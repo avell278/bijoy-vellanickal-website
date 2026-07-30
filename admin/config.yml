@@ -17,9 +17,9 @@ collections:
     folder: "src/content/reviews"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{name}} — {{#if published}}✅ Published{{else}}⏳ Not published yet{{/if}}"
+    summary: "{{name}} | {{#if published}}✅ Published{{else}}⏳ Not published yet{{/if}}"
     description: >
-      Reviews from clients. New reviews start unpublished — flip
+      Reviews from clients. New reviews start unpublished. Flip
       "Show this review on my website" to Yes when you're happy with it.
     sortable_fields: ["date", "name"]
     fields:
@@ -42,7 +42,7 @@ collections:
     folder: "src/content/gallery"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{caption}} — {{#if published}}✅ Shown{{else}}⏳ Hidden{{/if}}"
+    summary: "{{caption}} | {{#if published}}✅ Shown{{else}}⏳ Hidden{{/if}}"
     description: >
       Closing-day and key-handover photos. Please get the family's
       permission before publishing a photo of them.
