@@ -3,19 +3,24 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("admin");
 
+  // content/ lives outside the src/ input dir, so Eleventy would not scan it.
+  // Without this, the reviews and gallery collections are always empty and
+  // nothing Bijoy publishes in /admin ever reaches the site.
+  eleventyConfig.addWatchTarget("src/content/");
+
   // Reviews and gallery entries are markdown files in content/, written by
   // Decap CMS. Only published:true items reach the site — that's the
   // approval gate Bijoy controls from /admin.
   eleventyConfig.addCollection("reviews", (api) =>
     api
-      .getFilteredByGlob("content/reviews/*.md")
+      .getFilteredByGlob("src/content/reviews/*.md")
       .filter((item) => item.data.published === true)
       .sort((a, b) => (b.data.date || 0) - (a.data.date || 0))
   );
 
   eleventyConfig.addCollection("gallery", (api) =>
     api
-      .getFilteredByGlob("content/gallery/*.md")
+      .getFilteredByGlob("src/content/gallery/*.md")
       .filter((item) => item.data.published !== false)
       .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
   );

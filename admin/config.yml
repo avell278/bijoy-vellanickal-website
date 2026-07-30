@@ -14,7 +14,7 @@ collections:
   - name: "reviews"
     label: "Client Reviews"
     label_singular: "Review"
-    folder: "content/reviews"
+    folder: "src/content/reviews"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     summary: "{{name}} — {{#if published}}✅ Published{{else}}⏳ Not published yet{{/if}}"
@@ -39,7 +39,7 @@ collections:
   - name: "gallery"
     label: "Happy Client Photos"
     label_singular: "Photo"
-    folder: "content/gallery"
+    folder: "src/content/gallery"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     summary: "{{caption}} — {{#if published}}✅ Shown{{else}}⏳ Hidden{{/if}}"
