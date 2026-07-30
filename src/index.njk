@@ -29,8 +29,10 @@ a{color:var(--blue-600)}
 .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-600);font-weight:600;margin-bottom:10px}
 .btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease;cursor:pointer;border:none}
 .btn:hover{transform:translateY(-1px)}
-.btn-primary{background:var(--blue-500);color:var(--white)}
-.btn-primary:hover{background:var(--blue-600)}
+/* blue-600 not blue-500: white on blue-500 is only 3.82:1, below the WCAG
+   AA 4.5:1 minimum for normal-size text. blue-600 gives 5.57:1. */
+.btn-primary{background:var(--blue-600);color:var(--white)}
+.btn-primary:hover{background:var(--navy-800)}
 .btn-outline{background:transparent;color:var(--navy-800);border:1.5px solid var(--sky-300)}
 .btn-outline:hover{background:var(--sky-50)}
 section{padding:76px 0}
@@ -42,7 +44,10 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .nav-links{display:flex;gap:26px;align-items:center;list-style:none}
 .nav-links a{text-decoration:none;color:var(--muted);font-size:14.5px;font-weight:500}
 .nav-links a:hover{color:var(--navy-800)}
+/* .nav-links a sets a muted grey that was overriding the button's white,
+   leaving grey-on-blue at 1.44:1. Restore white for the button. */
 .nav-links .btn{padding:9px 18px;font-size:14px}
+.nav-links .btn-primary,.nav-links .btn-primary:hover{color:var(--white)}
 
 .hero{background:linear-gradient(180deg,var(--sky-100) 0%,var(--sky-50) 100%);padding:84px 0 90px}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
@@ -109,7 +114,10 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .review-form>p{font-size:14.5px;color:var(--muted);margin-bottom:22px}
 .review-form label{display:block;font-size:13.5px;font-weight:600;color:var(--navy-800);margin:14px 0 6px}
 .review-form input,.review-form textarea,.review-form select{width:100%;padding:11px 14px;border:1.5px solid var(--sky-200);border-radius:9px;font-family:inherit;font-size:15px;color:var(--ink);background:var(--white)}
-.review-form input:focus,.review-form textarea:focus,.review-form select:focus{outline:none;border-color:var(--blue-500)}
+.review-form input:focus,.review-form textarea:focus,.review-form select:focus{outline:none;border-color:var(--blue-600);box-shadow:0 0 0 3px rgba(29,106,180,.35)}
+/* Visible keyboard focus on every interactive element (WCAG 2.4.7).
+   The border/box-shadow above covers text inputs; this covers the rest. */
+a:focus-visible,button:focus-visible,.btn:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--navy-800);outline-offset:2px;border-radius:4px}
 .review-form textarea{min-height:110px;resize:vertical}
 .review-form .btn{margin-top:20px}
 .form-note{font-size:12.5px;color:var(--muted);margin-top:12px}
@@ -145,9 +153,14 @@ footer a{color:var(--sky-300)}
 .cf-input:focus{outline:none;border-color:var(--blue-500)}
 .cf-textarea{min-height:100px;resize:vertical}
 .hidden-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+/* Skip link: hidden until focused, so keyboard users can jump past the nav. */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:var(--navy-900);color:var(--white);padding:12px 20px;border-radius:0 0 8px 0;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0}
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <nav>
   <div class="wrap">
@@ -162,6 +175,8 @@ footer a{color:var(--sky-300)}
     </ul>
   </div>
 </nav>
+
+<main id="main-content">
 
 <header class="hero" id="top">
   <div class="wrap">
@@ -281,7 +296,7 @@ footer a{color:var(--sky-300)}
     <div class="review-grid">
       {% for r in collections.reviews %}
       <div class="rcard">
-        <div class="stars">{{ r.data.rating | stars }}</div>
+        <div class="stars" role="img" aria-label="{{ r.data.rating }} out of 5 stars"><span aria-hidden="true">{{ r.data.rating | stars }}</span></div>
         <blockquote>&ldquo;{{ r.data.quote }}&rdquo;</blockquote>
         <p class="who">— {{ r.data.name }}{% if r.data.location %}, {{ r.data.location }}{% endif %}</p>
       </div>
@@ -321,12 +336,12 @@ footer a{color:var(--sky-300)}
       <h2>Let&rsquo;s find your home</h2>
       <p style="color:var(--muted)">Reach out any time — by phone, WhatsApp, or through the brokerage. Bijoy is always happy to answer questions, no obligation.</p>
       <ul class="contact-list">
-        <li><div class="ico">📞</div><div><b>Direct</b><span><a href="tel:{{ site.phoneDirectHref }}">{{ site.phoneDirect }}</a></span></div></li>
-        <li><div class="ico">🏢</div><div><b>Office</b><span><a href="tel:{{ site.phoneOfficeHref }}">{{ site.phoneOffice }}</a> ({{ site.brokerage }})</span></div></li>
-        <li><div class="ico">✉️</div><div><b>Email</b><span><a href="mailto:{{ site.email }}">{{ site.email }}</a></span></div></li>
-        <li><div class="ico">📍</div><div><b>Address</b><span>{{ site.address }}</span></div></li>
-        <li><div class="ico">💬</div><div><b>Facebook</b><span><a href="{{ site.facebook }}" target="_blank" rel="noopener">facebook.com/bijoyvellanickal</a></span></div></li>
-        <li><div class="ico">🏠</div><div><b>Listings</b><span><a href="{{ site.listingsUrl }}" target="_blank" rel="noopener">My RE/MAX agent page</a></span></div></li>
+        <li><div class="ico" aria-hidden="true">📞</div><div><b>Direct</b><span><a href="tel:{{ site.phoneDirectHref }}">{{ site.phoneDirect }}</a></span></div></li>
+        <li><div class="ico" aria-hidden="true">🏢</div><div><b>Office</b><span><a href="tel:{{ site.phoneOfficeHref }}">{{ site.phoneOffice }}</a> ({{ site.brokerage }})</span></div></li>
+        <li><div class="ico" aria-hidden="true">✉️</div><div><b>Email</b><span><a href="mailto:{{ site.email }}">{{ site.email }}</a></span></div></li>
+        <li><div class="ico" aria-hidden="true">📍</div><div><b>Address</b><span>{{ site.address }}</span></div></li>
+        <li><div class="ico" aria-hidden="true">💬</div><div><b>Facebook</b><span><a href="{{ site.facebook }}" target="_blank" rel="noopener">facebook.com/bijoyvellanickal</a></span></div></li>
+        <li><div class="ico" aria-hidden="true">🏠</div><div><b>Listings</b><span><a href="{{ site.listingsUrl }}" target="_blank" rel="noopener">My RE/MAX agent page</a></span></div></li>
       </ul>
     </div>
     <div class="map-card">
@@ -346,6 +361,8 @@ footer a{color:var(--sky-300)}
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">
